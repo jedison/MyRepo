@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+	<!-- XA DATASOURCE WITH POOLING -->
+	<Resource id="myDBXAPooled" type="DataSource">
+		XaDataSource myDBXA
+		DataSourceCreator dbcp
+		JtaManaged true
+		UserName TestUser
+		Password TestPassword
+		MaxWait 2000
+		ValidationQuery SELECT 1
+		InitialSize 2	
+		MaxActive 15
+		MinIdle 3
+		MaxIdle 5
+		MinEvictableIdleTimeMillis 25000
+		TimeBetweenEvictionRunsMillis 40000
+		LogAbandoned true
+		RemoveAbandoned true
+		RemoveAbandonedTimeout 20
+	</Resource>
+
+	<Resource id="myDBXA" type="XADataSource" class-name="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource">
+		Url jdbc:mysql://10.254.187.69:3306/test
+		User TestUser
+		Password TestPassword
+	</Resource>
+
+ 
+ 	
+ 	<!-- NON XA DATASOURCE WITH POOLING -->	
+ 	<!-- 
+ 	org.apache.openejb.resource.jdbc.managed.local.ManagedDataSource delegates to
+	org.apache.tomee.jdbc.TomEEDataSourceCreator$TomEEDataSource@1334918e{ConnectionPool[
+	defaultAutoCommit=true;
+	defaultReadOnly=null;
+	defaultTransactionIsolation=-1;
+	defaultCatalog=null;
+	driverClassName=com.mysql.jdbc.Driver;
+	maxActive=15;
+	maxIdle=5;
+	minIdle=3;
+	initialSize=2;
+	maxWait=2000;
+	testOnBorrow=true;
+	testOnReturn=false;
+	timeBetweenEvictionRunsMillis=40000;
+	numTestsPerEvictionRun=3;
+	minEvictableIdleTimeMillis=25000;
+	testWhileIdle=false;
+	testOnConnect=false;
+	password=********;
+	url=jdbc:mysql://10.254.187.69:3306/test;
+	username=TestUser;
+	validationQuery=SELECT 1;
+	validationQueryTimeout=-1;
+	validatorClassName=null;
+	validationInterval=30000;
+	accessToUnderlyingConnectionAllowed=true;
+	removeAbandoned=false;
+	removeAbandonedTimeout=60;
+	logAbandoned=false;
+	connectionProperties=null;
+	initSQL=null;
+	jdbcInterceptors=null;
+	jmxEnabled=true;
+	fairQueue=true;
+	useEquals=true;
+	abandonWhenPercentageFull=0;
+	maxAge=0;
+	useLock=false;
+	dataSource=null;
+	dataSourceJNDI=null;
+	suspectTimeout=0;
+	alternateUsernameAllowed=false;
+	commitOnReturn=false;
+	rollbackOnReturn=false;
+	useDisposableConnectionFacade=true;
+	logValidationErrors=false;
+	propagateInterruptState=false;
+	ignoreExceptionOnPreLoad=false;
+	}
+ 	}
+    -->
+    <!-- 
+    <Resource id="myDBXAPooled" type="DataSource">
+	JtaManaged true
+	Auth Container
+	InitialSize 2	
+	MaxActive 15
+	MaxIdle 5
+	MinIdle 3
+	MaxWaitTime 2000
+    ValidationQuery SELECT 1
+	UserName TestUser
+	Password TestPassword
+	DriverClassName com.mysql.jdbc.Driver
+	MinEvictableIdleTime 25000 millisecond
+	TimeBetweenEvictionRuns 40000 millisecond
+	Url jdbc:mysql://10.254.187.69:3306/test
+	</Resource>
+	-->
+</tomee>

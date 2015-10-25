@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/TestApp">
+
+	<Resource name="jms/MyConnFactory"
+		auth="Container"
+		type="org.apache.activemq.ActiveMQXAConnectionFactory"
+		factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+		brokerURL="tcp://localhost:61616"/>
+
+                    
+</Context>
